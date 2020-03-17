@@ -4,16 +4,17 @@
     if(isset($_POST['submit']))
     {
         $id = $_POST['id'];
+        $category = $_POST['category'];
         $name = $_POST['name'];
         $date = $_POST['date'];
         $address = $_POST['address'];
-        $detail = $_POST['detail'];
+        $price = $_POST['price'];
         $status = $_POST['status'];
-        $image = $_POST['image'];
+        $detail = $_POST['detail'];
+        $permission = $_POST['permission'];
 
-        // ฟังก์ชันการอัพเดทอัพเดทข้อมูล
-        $sql = "UPDATE equipments SET eq_id='$id', eq_name='$name', eq_date='$date', eq_address='$address', eq_detail='$detail', eq_status='$status', eq_image='$image' 
-                WHERE equipments.eq_id='$id'";
+        $sql = "UPDATE equipments SET eq_id='$id', eq_type='$category', eq_name='$name', eq_date='$date', eq_address='$address', eq_price='$price', eq_status='$status', eq_detail='$detail', eq_permit='$permission' 
+        WHERE equipments.eq_id='$id'";
    
         if($conn->query($sql) === TRUE) 
         {

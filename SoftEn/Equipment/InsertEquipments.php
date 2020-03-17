@@ -1,4 +1,4 @@
-<!-- เชื่อมข้อมูลกับฐานข้อมูล -->
+ <!-- เชื่อมข้อมูลกับฐานข้อมูล -->
 <?php include "../connect.php"; ?>
 
 <!DOCTYPE html>
@@ -17,59 +17,81 @@
         {
             font-family: 'Mitr', sans-serif;
 		}
-        .kku
+        .cardborder
         {
-            width: 100px;
-            height: 160px;
-            float: right;
-            padding-right: 60;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .sc
-        {
-            width: 180px;
-            height: 160px;
-            float: right;
-            padding-right: 40px;
-        }
+
     </style>
 </head>
 <body>
 
     <div class="jumbotron">
-        <img src="../img/KKU.png" class="kku ">
-        <img src="../img/SC.png" class="sc">
-        <h2 class="display-2">ลงทะเบียนอุปกรณ์</h2>
-        <p class="lead">ระบบยืมและคืนอุปกรณ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
-        <hr class="my-4"> 
+        <!-- <img src="../img/KKU.png" class="kku ">
+        <img src="../img/SC.png" class="sc"> -->
+        <h2 class=" display-4">ลงทะเบียนครุภัณฑ์</h2>
+        <p class=" lead">ระบบยืมและคืนครุภัณฑ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
+        <hr class=" my-4"> 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <ul class="list-unstyled">
+                <li><strong><u>เงื่อนไขการลงทะเบียนครุภัณฑ์</u></strong></li>
+                <li>1. หมายเลขครุภัณฑ์ต้องกรอกเป็นตัวตัวเลขทั้งหมด 13 หลัก เช่น <span class="badge badge-warning">6002661759874</span></li>
+                <li>2. รายละเอียดต้องเป็นยี่ห้อของครุภัณฑ์และคุณสมบัติ(ถ้ามี) เช่น <span class="badge badge-warning">Dell Optiplex 7010 DT CORE i7</span></li>
+                <li>3. จำเป็นต้องกรอกทุกรายการ <span class="badge badge-danger" style="color:black"> ยกเว้น </span> สถานะ และ รายละเอียด</li> 
+            </ul>
+        </div>
     
-        <center>  
-            <form action="../Func_InsertEq.php" method="post">
+        <!-- <center>   -->
+            <form action="../Func_InsertEq.php" method="post" class="was-validated">
 
-                <div class="card border-primary mb-3" style="width: 80rem;">
+                <div class="cardborder card border-primary mb-3" style="width: auto;">
                     <div class="card-body">
 
-                        <!-- Cantainer 1 มี หมายเลข, ชื่อ -->
+                        <!-- Cantainer 1 มี หมายเลขอุปกรณ์, ประเภทอุปกรณ์ -->
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">
 
                                     <!-- กรอก หมายเลขอุปกรณ์ -->
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">หมายเลขอุปกรณ์</span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="กรอกหมายเลขอุปกรณ์" name="id" required>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">หมายเลขอุปกรณ์</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="กรอกหมายเลขอุปกรณ์" name="id" id="id"  pattern ="^(\d{13})?$"   required>
                                     </div>
 
                                 </div>
                                 <div class="col-sm">
 
-                                    <!-- กรอก ชื่ออุปกรณ์ -->
+                                    <!-- กรอก ประเภทอุปกรณ์ -->
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">ชื่ออุปกรณ์</span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="กรอกชื่ออุปกรณ์" name="name" required>
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="category">ประเภทอุปกรณ์</label>
+                                        </div>
+                                        <select  type="dropdown" class="custom-select" id="category" name="category" required >
+                                            <option  disabled selected value="">ระบุประเภท</option>
+                                            <!-- <optgroup label="ระบุประเภท"> -->
+                                            <option value="อาคารถาวร">อาคารถาวร</option>
+                                            <option value="อาคารชั่วคราว/โรงเรือน">อาคารชั่วคราว/โรงเรือน</option>
+                                            <option value="สิ่งก่อสร้าง">สิ่งก่อสร้าง</option>
+                                            <option value="ครุภัณฑ์สำนักงาน">ครุภัณฑ์สำนักงาน</option>
+                                            <option value="ครุภัณฑ์ยานพาหนะและขนส่ง">ครุภัณฑ์ยานพาหนะและขนส่ง</option>
+                                            <option value="ครุภัณฑ์ไฟฟ้าและวิทยุ">ครุภัณฑ์ไฟฟ้าและวิทยุ</option>
+                                            <option value="ครุภัณฑ์โฆษณาและเผยแพร่">ครุภัณฑ์โฆษณาและเผยแพร่</option>
+                                            <option value="ครุภัณฑ์การเกษตร">ครุภัณฑ์การเกษตร</option>
+                                            <option value="ครุภัณฑ์โรงงาน">ครุภัณฑ์โรงงาน</option>
+                                            <option value="ครุภัณฑ์ก่อสร้าง">ครุภัณฑ์ก่อสร้าง</option>
+                                            <option value="ครุภัณฑ์สำรวจ">ครุภัณฑ์สำรวจ</option>
+                                            <option value="ครุภัณฑ์วิทยาศาสตร์การแพทย์">ครุภัณฑ์วิทยาศาสตร์การแพทย์</option>
+                                            <option value="ครุภัณฑ์คอมพิวเตอร์">ครุภัณฑ์คอมพิวเตอร์</option>
+                                            <option value="ครุภัณฑ์การศึกษา">ครุภัณฑ์การศึกษา</option>
+                                            <option value="ครุภัณฑ์งานบ้านงานครัว">ครุภัณฑ์งานบ้านงานครัว</option>
+                                            <option value="ครุภัณฑ์กีฬา">ครุภัณฑ์กีฬา</option>
+                                            <option value="ครุภัณฑ์ดนตรีและนาฏศิลป์">ครุภัณฑ์ดนตรีและนาฏศิลป์</option>
+                                            <option value="ครุภัณฑ์อาวุทธ">ครุภัณฑ์อาวุธ</option>
+                                            <option value="ครุภัณฑ์สนาม">ครุภัณฑ์สนาม</option>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -77,47 +99,72 @@
                             </div>
                         </div>  
                         
-                        <!-- Cantainer 2 วันที่นำเข้า, ที่จัดเก็บ, สถานะ, รายละเอียด, รูปภาพ -->
+                        <!-- Cantainer 2 ชื่ออุปกรณ์, วันที่นำเข้า, ที่จัดเก็บ, สิทธิ์, ราคา, สถานะ, รายละเอียด -->
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">
 
-                                    <!-- กรอก วันที่นำเข้า-->
+                                    <!-- กรอก ชื่ออุปกรณ์ -->
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">วันที่นำเข้า</span>
+                                            <span class="input-group-text" id="basic-addon1">ชื่ออุปกรณ์</span>
                                         </div>
-                                        <input type="date" class="form-control" placeholder="กรอกวันที่นำเข้า" name="date" required>
+                                        <input required type="text" class="form-control" placeholder="กรอกชื่ออุปกรณ์" name="name" id="name" >
                                     </div>
 
                                     <!-- กรอก ที่จัดเก็บ -->
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">ที่จัดเก็บ</span>
+                                            <span class="input-group-text" id="basic-addon1">สถานที่จัดเก็บ</span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="กรอกที่จัดเก็บ" name="address" required>
-                                    </div>
+                                        <input required type="text" class="form-control" placeholder="กรอกที่จัดเก็บ" name="address" id="address" >
+                                    </div>     
 
-                                    <!-- เลือก รูปภาพ -->
+                                    <!-- กรอก สิทธื์ -->
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01">เลือกรูปภาพ</label>
+                                            <label class="input-group-text" for="inputGroupSelect01" >สิทธิ์การเข้าถึง</label>
                                         </div>
-                                        <form class="imgForm" action="leanform.php" method="post" enctype="multipart/form-data" required>
-                                        <input type="file" name="image">
-                                    </div>
-                                    
+                                        <select  type="text" class="custom-select" id="inputGroupSelect01" name="permission" id="permission" required>
+                                            <option   disabled selected value="">ระบุสิทธิ์</option>
+                                            <!-- <optgroup label="สถานะที่ต้องการ"> -->
+                                            <option value="นักศึกษา">นักศึกษา</option>
+                                            <!-- <option value="อาจารย์">อาจารย์</option>
+                                            <option value="บุคลากร">บุคลากร</option> -->
+                                            <option value="อาจารย์และบุคลากร">อาจารย์และบุคลากร</option>
+                                         <option value="ไม่จำกัดสิทธิ์">ไม่จำกัดสิทธิ์</option>
+                                        </select>
+                                    </div>                             
+
                                 </div>
                                 <div class="col-sm">
+
+                                    <!-- กรอก ราคา -->
+                                    <!-- <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">ราคาอุปกรณ์</span>
+                                        </div>
+                                        <input  type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" name="price" id="price" required>
+                                    </div> -->
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">ราคาอุปกรณ์</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" name="price" id="price" aria-label="Amount (to the nearest dollar)" required>
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">บาท</span>
+                                        </div>
+                                    </div>
 
                                     <!-- เลือก สถานะ -->
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01">สถานะการยืม</label>
+                                            <label class="input-group-text" for="status">สถานะ</label>
                                         </div>
-                                        <select type="text" class="custom-select" id="inputGroupSelect01" name="status" required>
-                                            <option disabled selected>ระบุสถานะ</option>
-                                            <optgroup label="สถานะที่ต้องการ">
+                                        <select type="text" class="custom-select" id="status" name="status" >
+                                            <option disabled selected value="">ระบุสถานะ</option>
+                                            <!-- <optgroup label="สถานะที่ต้องการ"> -->
                                             <option selected>ว่าง</option>
                                         </select>
                                     </div>
@@ -127,7 +174,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">รายละเอียด</label>
                                         </div>
-                                        <textarea rows="3" cols="10" class="form-control" placeholder="กรอกรายละเอียด" name="detail" required ></textarea>
+                                        <textarea  rows="3" cols="10" class="form-control" placeholder="กรอกรายละเอียด" name="detail" id="detail" ></textarea>
                                     </div>
 
                                 </div>

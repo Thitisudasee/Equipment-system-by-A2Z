@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registration Form</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -17,6 +18,7 @@
         {
             font-family: 'Mitr', sans-serif;
             background-color: #E8ECEF;
+
 		}
         .kku
         {
@@ -25,22 +27,14 @@
             float: right;
             padding-right: 60;
         }
-        .sc
-        {
-            width: 180px;
-            height: 160px;
-            float: right;
-            padding-right: 40px;
-        }
 
     </style>
 </head>
 <body>
 
     <div class="jumbotron">
-        <img src="../img/KKU.png" class="kku ">
-        <img src="../img/SC.png" class="sc">
-        <h2 class="display-2">ลงทะเบียน</h2>
+        <!-- <img src="../img/KKU.png" class=" kku "> -->
+        <h2 class="display-4">ลงทะเบียน</h2>
         <p class="lead">ระบบยืมคืนอุปกรณ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
         <hr class="my-4"> 
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -53,42 +47,61 @@
             </div>
 
         <center>  
-            <form action="../Func_Reg.php" method="post" >
+            <form action="../Func_Reg.php" method="post" class="was-validated">
 
-                <div class="card border-primary mb-3" style="width: 80rem;">
+                <div class="card border-primary mb-3" style="width: 60rem;">
                     <div class="card-body">
 
-                        <!-- Container 1 มี Id, Password -->
+                        <!-- Container 1 มี Email, Password -->
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm">
 
-                                    <!-- กรอก UserID -->
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">UserID</span>
+                                    <div class="col-sm">
+
+                                        <!-- กรอก E-Mail -->
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Username</span>
+                                            </div>
+                                            <input required type="email" class="form-control is-invalid" placeholder="กรอกอีเมล" name="email" >
+                                        </div>
+
                                     </div>
-                                    <input required type="text" class="form-control" placeholder="กรอกรหัสประจำตัวผู้ใช้" name="id" pattern="^(\d{9,9})*-(\d{1,1})" >
-                                    </div>
+                                    <div class="col-sm">
+
+                                        <!-- กรอก Password -->
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Password</span>
+                                            </div>
+                                            <input required type="password" class="form-control" placeholder="กรอกรหัสผ่าน" name="psw" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" >
+                                        </div>
 
                                 </div>
-                                <div class="col-sm">
 
-                                    <!-- กรอก Password -->
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Password</span>
-                                    </div>
-                                    <input required type="password" class="form-control" placeholder="กรอกรหัสผ่าน" name="psw" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" >
-                                    </div>
-
-                                </div>
                             </div>
                         </div>  
                         
-                        <!-- Container 2 มี ชื่อ, เพศ, สกุล, สาขา-->
+                        <!-- Container 2 มี ชื่อ, สกุล-->
                         <div class="container">
                             <div class="row">
+
+                                <div class="col-sm">
+                                    <!-- กรอก Prefix -->
+                                    <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Dropdow_Gender">Prefix</label>
+                                        </div>
+                                        <select required class="custom-select" id="Dropdow_Gender"name="gender" >
+                                            <option value="" disabled selected>ระบุคำนำหน้าชื่อ</option>
+                                            <!-- <optgroup label="เพศ"> -->
+                                            <option value="ชาย">นาย</option>
+                                            <option value="หญิง">นาง</option>
+                                            <option value="หญิง">นางสาว</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm">
 
                                     <!-- กรอก ชื่อจริง -->
@@ -99,80 +112,32 @@
                                         <input required type="text" class="form-control" placeholder="กรอกชื่อจริง" name="name" pattern="(^[A-Z][a-z]+)" >
                                     </div>
 
-                                    <!-- เลือก เพศ -->
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="Dropdow_Gender">Gender</label>
-                                        </div>
-                                        <select required class="custom-select" id="Dropdow_Gender"name="gender" >
-                                            <option value="" disabled selected>ระบุเพศ</option>
-                                            <optgroup label="เพศ">
-                                            <option value="ชาย">ชาย</option>
-                                            <option value="หญิง">หญิง</option>
-                                            <option value="เพศทางเลือก">เพศทางเลือก</option>
-                                        </select>
-                                    </div>
-
                                 </div>
                                 <div class="col-sm">
                                     
                                     <!-- กรอก ชื่อสกุล -->
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Surname</span>
-                                    </div>
-                                    <input required type="text" class="form-control" placeholder="กรอกชื่อสกุล" name="sur" pattern="(^[A-Z][a-z]+)" >
-                                    </div>
-
-                                    <!-- เลือก สาขา -->
-                                    <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="Dropdown_Major">Department</label>
+                                            <span class="input-group-text" id="basic-addon1">Surname</span>
                                         </div>
-                                        <select required class="custom-select" id="Dropdown_Major" name="dept" >
-                                            <option value="" disabled selected>ระบุสาขาวิชา</option>
-                                            <optgroup label="สาขา">
-                                            <option value="วิทยาการคอมพิวเตอร์">วิทยาการคอมพิวเตอร์</option>
-                                            <option value="วิทยาการคอมพิวเตอร์ โครงการพิเศษ">วิทยาการคอมพิวเตอร์ โครงการพิเศษ</option>
-                                            <option value="เทคโนโลยีสารสนเทศ">เทคโนโลยีสารสนเทศ</option>
-                                            <option value="เทคโนโลยีสารสนเทศ โครงการพิเศษ">เทคโนโลยีสารสนเทศ โครงการพิเศษ</option>
-                                            <option value="ภูมิศาสตร์สารสนเทศ">ภูมิศาสตร์สารสนเทศ</option>
-                                            <option value="ภูมิศาสตร์สารสนเทศ โครงการพิเศษ">ภูมิศาสตร์สารสนเทศ โครงการพิเศษ</option>
-                                        </select>
+                                        <input required type="text" class="form-control" placeholder="กรอกชื่อสกุล" name="sur" pattern="(^[A-Z][a-z]+)" >
                                     </div>
 
                                 </div>
                             </div>
                         </div> 
 
-                        <!-- Container 3 มี Roles, Mail, Phone -->
+                        <!-- Container 3 มี UserID, Phone, Permission -->
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">
 
-                                    <!-- เลือก Roles -->
+                                    <!-- กรอก UserID -->
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="Dropdown_Role">ตำแหน่ง</label>
+                                            <span class="input-group-text" id="basic-addon1">UserID</span>
                                         </div>
-                                        <select required class="custom-select" id="Dropdown_Role" name="roles" >
-                                            <option value="" disabled selected>ระบุตำแหน่ง</option>
-                                            <optgroup label="ตำแหน่ง">
-                                            <option value="นักศึกษา">นักศึกษา</option>
-                                            <option value="อาจารย์">อาจารย์</option>
-                                            <option value="พนักงาน">พนักงาน</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="col-sm">
-
-                                    <!-- กรอก E-Mail -->
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">E-Mail</span>
-                                    </div>
-                                    <input required type="email" class="form-control" placeholder="กรอกอีเมล" name="email" >
+                                        <input required type="text" class="form-control" placeholder="กรอกรหัสประจำตัวผู้ใช้" name="id" pattern="^(\d{9,9})*-(\d{1,1})" >
                                     </div>
 
                                 </div>
@@ -180,13 +145,30 @@
 
                                     <!-- กรอก Phone Number -->
                                     <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Tel</span>
-                                    </div>
-                                    <input required type="text" class="form-control" placeholder="กรอกเบอร์โทรศัพท์" name="phone" pattern="^[0-9]\d{2}-\d{3}-\d{4}$" >
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Tel</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="กรอกเบอร์โทรศัพท์" name="phone" pattern="^[0-9]\d{2}-\d{3}-\d{4}$" >
                                     </div>
 
                                 </div>
+                                <div class="col-sm">
+
+                                    <!-- กรอก Permission -->
+                                    <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                            <label class="input-group-text" for="Dropdow_Gender">Priviledge</label>
+                                        </div>
+                                        <select required class="custom-select" id="Dropdow_Gender"name="roles" >
+                                            <option value="" disabled selected>กรอกสิทธ์</option>
+                                            <!-- <optgroup label="เพศ"> -->
+                                            <option value="นักศึกษา">นักศึกษา</option>
+                                            <!-- <option value="อาจารย์">อาจารย์</option>
+                                            <option value="บุคลากร">บุคลากร</option> -->
+                                            <option value="อาจารย์และบุคลากร">อาจารย์และบุคลากร</option>
+                                        </select>
+                                    </div>
+   
                             </div>
                         </div>
 
@@ -200,7 +182,7 @@
                         
                     </div>
                 </div>
-
+        
             </form>
         </center>
 

@@ -40,20 +40,22 @@
 <body>
 
     <div class="jumbotron">
-        <img src="../img/KKU.png" class="kku ">
-        <img src="../img/SC.png" class="sc">
-        <h2 class="display-2">เข้าสู่ระบบ</h2>
+        <!-- <img src="../img/KKU.png" class="kku ">
+        <img src="../img/SC.png" class="sc"> -->
+        <h2 class="display-4">เข้าสู่ระบบ</h2>
         <p class="lead">ระบบยืมและคืนอุปกรณ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
         <hr class="my-4">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong><u>เงื่อนไขการเข้าสู่ระบบ</u></strong> 
                 <br>
-                1. ผู้ใช้จะต้องทำการลงทะเบียนผู้ใช้ในระบบก่อน จึงจะมีสิทธิ์ในการยืมคืนอุปกรณ์เครื่องมือ
+                1. ผู้ใช้จะต้องทำการลงทะเบียนผู้ใช้ในระบบก่อน จึงจะมีสิทธิในการยืมคืนอุปกรณ์เครื่องมือ
                 <br>
                 2. ระบบขอสงวนสิทธิ์การใช้งานสำหรับผู้ใช้ในสาขาวิชาวิทยาการคอมพิวเตอร์เท่านั้น
                 <br>
-                3. กรอกรหัสประจำตัวต้องมีขีด (-) ทุกครั้ง เช่น <span class="badge badge-warning">UserID: xxxxxxxx-x</span>
-            </div>
+                3. Username ในกรณีนักศึกษา <span class="badge badge-warning">Username : sompong@kkumail.com</span>
+                <br>
+                4. Username ในกรณีนักศึกอาจารย์และบุคลากร <span class="badge badge-warning">Username : paris@kkumail.ac.th</span>
+                </div>
 
         <center>
             <form action="../Func_LogCheck.php" method="post">
@@ -64,9 +66,9 @@
                         <!-- กรอก UserID -->
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">UserID</span>
+                                <span class="input-group-text" id="basic-addon1">Username</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="กรอกรหัสประจำตัวผู้ใช้" name="id" id="id" pattern="^(\d{9,9})*-(\d{1,1})" required>
+                            <input type="text" class="form-control" placeholder="กรอกอีเมล" name="id" id="id" required>
                         </div>
 
                         <!-- กรอก Password -->
@@ -81,9 +83,7 @@
 
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="submit" class="btn btn-lg btn-outline-success" name="log" id="log">เข้าสู่ระบบ</button>
-                            <button type="button" class="btn btn-lg btn-outline-warning" name="reg" id="reg" onclick="location.href='../Register/Registration.php'">ลงทะเบียนผู้ใช้ใหม่</button>
-                            <button type="button" class="btn btn-lg btn-outline-primary" name="admin" id="admin" onclick="location.href='AdminLogIn.php'">ผู้ดูแลระบบ</button>
-                            <!-- <button type="button" class="btn btn-lg btn-outline-danger">ลืมรหัสผ่าน</button> -->
+                           
                         </div>
                     </div>
                 </div>

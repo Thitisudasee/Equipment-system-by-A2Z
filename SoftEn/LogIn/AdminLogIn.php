@@ -43,14 +43,14 @@
 <body>
 
     <div class="jumbotron">
-        <img src="../img/KKU.png" class="kku ">
-        <img src="../img/SC.png" class="sc">
-        <h2 class="display-2">ผู้ดูแลระบบ</h2>
+        <!-- <img src="../img/KKU.png" class="kku ">
+        <img src="../img/SC.png" class="sc"> -->
+        <h2 class="display-4">ผู้ดูแลระบบ</h2>
         <p class="lead">ระบบยืมและคืนอุปกรณ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
         <hr class="my-4">
 
         <center>
-            <form action="../Func_LogCheck_Ad.php" method="post">
+            <form action="../Func_LogCheck_Ad.php" method="POST">
 
                 <div class="card border-primary mb-3" style="width: 50rem;">
                     <div class="card-body">

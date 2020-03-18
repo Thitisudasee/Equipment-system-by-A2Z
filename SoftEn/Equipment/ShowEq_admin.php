@@ -83,11 +83,30 @@ header("location: ../LogIn/LogIn.php");
     
 </head>
 <body>
-
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">A2Z</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="../Home/admin.php">หน้าแรก <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="ShowEq_admin.php">รายการครุภัณฑ์</a>
+        </li>
+        </ul>
+    </div>
+    <span class="navbar-text">
+            <button class="btn btn-outline-danger my-2 my-sm-0" onclick="location.href='../LogIn/Logout.php'" type="submit">ออกจากระบบ</button>
+    </span>
+    </nav>
     <div class="jumbotron">
         <!-- <img src="../img/KKU.png" class="kku ">
         <img src="../img/SC.png" class="sc"> -->
-        <h2 class="allborder display-4">หน้าจัดการอุปกรณ์(ผู้ดูแลระบบ)</h2>
+
+        <h2 class="allborder lead-8">หน้าจัดการอุปกรณ์(ผู้ดูแลระบบ)</h2>
         <p class="allborder lead">ระบบยืมและคืนอุปกรณ์เครื่องมือ สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น</p>
         <hr class="allborder my-4">
 
@@ -99,7 +118,6 @@ header("location: ../LogIn/LogIn.php");
                     <button type="button" class="btn btn-lg btn-primary" name="add" id="add" onclick="location.href='../Equipment/InsertEquipments.php'">ลงทะเบียนอุปกรณ์</button>
                 </div> 
                 <div class="col-md-2 float-right">
-        <button type="button" class="btn btn-lg btn-danger"  name="logout" id="logout" onclick="location.href='../LogIn/Logout.php'">ออกจากระบบ</button>
     </div>
 
                 <!-- <form class="form-inline" action= method="POST">
@@ -129,7 +147,7 @@ header("location: ../LogIn/LogIn.php");
                     <tbody>          
                     <?php
 
-                        $sql = "SELECT * FROM equipments";
+                        $sql = "SELECT * FROM `equipments` WHERE eq_hidden = 0";
                         $que = $conn->query($sql);
 
                         // ฟังก์ชันการใช้ลูปวนเพื่อนำข้อมูลออกตามจำนวนข้อมูลที่มี ID=001S

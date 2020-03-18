@@ -13,20 +13,20 @@ $row = $stmt->fetch();
 if (!empty($row)) {
 
 session_regenerate_id();
-
+$_SESSION["fullname"] = $row["firstname"]; 
 $_SESSION["username"] = $row["email"];
 $role = $row['roles'];
 	if($role == 1)
 	{
-	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Equipment/ShowEq_user.php'};</script>";
+	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Home/std.php'};</script>";
 	}
 	elseif($role == 2)
 	{
-	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Equipment/ShowEq_tmuser.php'};</script>"; 
+	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Home/teacher.php'};</script>"; 
 	}
 	elseif($role == 3)
 	{
-	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Equipment/ShowEq_tmuser.php'};</script>";
+	echo "<script>if(confirm('เข้าสู่ระบบสำเร็จ !!')){window.location.href='Home/admin.php'};</script>";
 	}
 } 
 else { 

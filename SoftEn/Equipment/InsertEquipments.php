@@ -1,5 +1,11 @@
  <!-- เชื่อมข้อมูลกับฐานข้อมูล -->
-<?php include "../connect.php"; ?>
+<?php include "../connect.php"; 
+session_start();
+// ตรวจสอบวา่ มชี อื่ ใน session หรือไม่ หากไม่มีให้ไปหน้า login อัตโนมัติ
+if (empty($_SESSION["username"]) ) {
+header("location: ../LogIn/LogIn.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<?php
+        include '../Home/bootstrap.php';
+    ?>
     <title>InsertData</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -26,7 +35,26 @@
     </style>
 </head>
 <body>
-
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">A2Z</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">หน้าแรก <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../Equipment/ShowEq_admin.php">รายการครุภัณฑ์</a>
+			</li>
+			</ul>
+		</div>
+		<span class="navbar-text">
+				<button class="btn btn-outline-danger my-2 my-sm-0" onclick="location.href='../LogIn/Logout.php'" type="submit">ออกจากระบบ</button>
+		</span>
+		</nav>
     <div class="jumbotron">
         <!-- <img src="../img/KKU.png" class="kku ">
         <img src="../img/SC.png" class="sc"> -->
@@ -36,7 +64,7 @@
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <ul class="list-unstyled">
                 <li><strong><u>เงื่อนไขการลงทะเบียนครุภัณฑ์</u></strong></li>
-                <li>1. หมายเลขครุภัณฑ์ต้องกรอกเป็นตัวตัวเลขทั้งหมด 13 หลัก เช่น <span class="badge badge-warning">6002661759874</span></li>
+                <li>1. หมายเลขครุภัณฑ์ต้องกรอกเป็นตัวตัวเลขทั้งหมด 13 หลัก เช่น <span class="badge badge-warning">5702140000744</span></li>
                 <li>2. รายละเอียดต้องเป็นยี่ห้อของครุภัณฑ์และคุณสมบัติ(ถ้ามี) เช่น <span class="badge badge-warning">Dell Optiplex 7010 DT CORE i7</span></li>
                 <li>3. จำเป็นต้องกรอกทุกรายการ <span class="badge badge-danger" style="color:black"> ยกเว้น </span> สถานะ และ รายละเอียด</li> 
             </ul>
@@ -151,7 +179,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">ราคาอุปกรณ์</span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" name="price" id="price" aria-label="Amount (to the nearest dollar)" required>
+                                        <input type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" name="price" id="price" aria-label="Amount (to the nearest dollar)" pattern ="^[0-9]*$" required>
                                             <div class="input-group-append">
                                             <span class="input-group-text">บาท</span>
                                         </div>

@@ -4,7 +4,7 @@
     if(isset($_GET['delete']))
     {
         $del = $_GET['delete'];
-        $sql = "DELETE FROM equipments where equipments.eq_id = '$del'";
+        $sql = "UPDATE `equipments` SET `eq_hidden` = '1' WHERE `equipments`.`eq_id` = '$del'";
         $del = $conn->query($sql);
     }
     if($conn->query($sql) == TRUE) 

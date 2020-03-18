@@ -1,5 +1,11 @@
 <!-- เชื่อมข้อมูลกับฐานข้อมูล -->
-<?php include "../connect.php"; ?>
+<?php include "../connect.php"; 
+session_start();
+// ตรวจสอบวา่ มชี อื่ ใน session หรือไม่ หากไม่มีให้ไปหน้า login อัตโนมัติ
+if (empty($_SESSION["username"]) ) {
+header("location: ../LogIn/LogIn.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +36,26 @@
     </style>
 </head>
 <body>
-    
+    <div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">A2Z</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="../Home/admin.php">หน้าแรก <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../Equipment/ShowEq_admin.php">รายการครุภัณฑ์</a>
+			</li>
+			</ul>
+		</div>
+		<span class="navbar-text">
+				<button class="btn btn-outline-danger my-2 my-sm-0" onclick="location.href='../LogIn/Logout.php'" type="submit">ออกจากระบบ</button>
+		</span>
+		</nav>
     <div class="jumbotron">
         <!-- <img src="../img/KKU.png" class="kku">
         <img src="../img/SC.png" class="sc"> -->
@@ -175,7 +200,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">ราคาอุปกรณ์</span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" value="<?php echo $row["eq_price"]?>" name="price" id="price" aria-label="Amount (to the nearest dollar)" required>
+                                        <input type="text" class="form-control" placeholder="กรอกราคาอุปกรณ์" value="<?php echo $row["eq_price"]?>" name="price" id="price" aria-label="Amount (to the nearest dollar)"  pattern ="^[0-9]*$" required>
                                             <div class="input-group-append">
                                             <span class="input-group-text">บาท</span>
                                         </div>
